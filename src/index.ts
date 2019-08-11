@@ -1,3 +1,2 @@
-export function hoge(a: number) {
-  return 1 + a
-}
+export * from './daty'
+export * from './timey'
