@@ -1,7 +1,7 @@
 {
   "name": "@ztrehagem/daty",
   "version": "0.0.1",
-  "description": "A reactive-oriented Date object.",
+  "description": "A reactive-oriented tiny date library",
   "author": {
     "email": "shigeki.suwa@ztrehagem.dev",
     "name": "Shigeki Suwa",
