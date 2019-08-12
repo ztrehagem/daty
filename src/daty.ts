@@ -15,7 +15,7 @@ export class Daty {
   ) {
     this._jsDate = new Date(1900, 0, 1, 0, 0, 0, 0)
     if (yearOrJsDate instanceof Date) {
-      this.dateObj = yearOrJsDate
+      this.jsDate = yearOrJsDate
     } else {
       this.year = yearOrJsDate
       this.month = month
@@ -96,20 +96,20 @@ export class Daty {
     return endOfMonth(this.year, this.month)
   }
 
-  get dateObj() {
+  get jsDate() {
     this._jsDate.setFullYear(this.year)
     this._jsDate.setMonth(this.month)
     this._jsDate.setDate(this.date)
     return this._jsDate
   }
 
-  set dateObj(obj: Date) {
+  set jsDate(obj: Date) {
     this.year = obj.getFullYear()
     this.month = obj.getMonth()
     this.date = obj.getDate()
   }
 
   toDate() {
-    return new Date(this.dateObj)
+    return new Date(this.jsDate)
   }
 }

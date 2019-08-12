@@ -20,7 +20,7 @@ export class Timey {
   ) {
     this._jsDate = new Date(1900, 0, 1, 0, 0, 0, 0)
     if (hourOrJsDate instanceof Date) {
-      this.dateObj = hourOrJsDate
+      this.jsDate = hourOrJsDate
     } else {
       this.hour = hourOrJsDate
       this.minute = minute
@@ -121,7 +121,7 @@ export class Timey {
     return !isNaN(this._millisecond)
   }
 
-  get dateObj() {
+  get jsDate() {
     this._jsDate.setHours(this.hour)
     this._jsDate.setMinutes(this.minute)
     this._jsDate.setSeconds(this.second)
@@ -129,7 +129,7 @@ export class Timey {
     return this._jsDate
   }
 
-  set dateObj(obj: Date) {
+  set jsDate(obj: Date) {
     this.hour = obj.getHours()
     this.minute = obj.getMinutes()
     this.second = obj.getSeconds()
@@ -137,6 +137,6 @@ export class Timey {
   }
 
   toDate() {
-    return new Date(this.dateObj)
+    return new Date(this.jsDate)
   }
 }
