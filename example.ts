@@ -1,4 +1,4 @@
-import { Daty, Timey } from './dist'
+import { Daty, Timy } from './dist'
 
 let d = new Daty()
 
@@ -7,7 +7,7 @@ d.jsDate = new Date()
 console.log('d', d)
 console.log('d.jsDate', d.jsDate)
 
-let t = new Timey()
+let t = new Timy()
 
 console.log('t.jsDate = new Date()')
 t.jsDate = new Date()

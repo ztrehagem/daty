@@ -1,2 +1,2 @@
 export * from './daty'
-export * from './timey'
+export * from './timy'
