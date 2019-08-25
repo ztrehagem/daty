@@ -1,115 +1,63 @@
-import { endOfMonth } from './utils'
+import { DatyCore } from './daty-core'
 
-export class Daty {
-  protected _year = NaN
-  protected _month = NaN
-  protected _date = NaN
-  protected _jsDate: Date
+export class Daty extends DatyCore {
+  // --------------------------------
+  // week day
+  // --------------------------------
 
-  constructor(jsDate: Date)
-  constructor(year?: number, month?: number, date?: number)
-  constructor(
-    yearOrJsDate: number | Date = NaN,
-    month: number = NaN,
-    date: number = NaN,
-  ) {
-    this._jsDate = new Date(1900, 0, 1, 0, 0, 0, 0)
-    if (yearOrJsDate instanceof Date) {
-      this.jsDate = yearOrJsDate
-    } else {
-      this.year = yearOrJsDate
-      this.month = month
-      this.date = date
-    }
+  get day() {
+    return this.jsDate.getDay()
   }
 
-  get year() {
-    return this._year
+  // --------------------------------
+  // calculation
+  // --------------------------------
+
+  valueOf() {
+    return this.jsDate.valueOf()
   }
 
-  set year(year: number) {
-    year = Math.round(year)
-    this._year = Math.max(year, 1900)
-    this.date = Math.min(this.date, this.endOfMonth)
+  after(amount: number, unit: 'year' | 'month' | 'date') {
+    const daty = this.clone()
+    daty[unit] += amount
+    return daty
   }
 
-  clearYear() {
-    this._year = NaN
+  before(amount: number, unit: 'year' | 'month' | 'date') {
+    return this.after(-amount, unit)
   }
 
-  get hasYear() {
-    return !isNaN(this._year)
+  equals(daty: Daty) {
+    return (
+      ((!this.hasYear && !daty.hasYear) || this.year === daty.year) &&
+      ((!this.hasMonth && !daty.hasMonth) || this.month === daty.month) &&
+      ((!this.hasDate && !daty.hasDate) || this.date === daty.date)
+    )
   }
 
-  get month() {
-    return this._month
+  // --------------------------------
+  // general methods
+  // --------------------------------
+
+  clear() {
+    this.clearYear()
+    this.clearMonth()
+    this.clearDate()
   }
 
-  set month(month: number) {
-    month = Math.round(month)
-    if (month < 0) {
-      this.year -= 1
-      this.month = month + 12
-    } else if (month > 11) {
-      this.year += 1
-      this.month = month - 12
-    } else {
-      this._month = month
-      this.date = Math.min(this.date, this.endOfMonth)
-    }
+  get isFilled() {
+    return this.hasYear && this.hasMonth && this.hasDate
   }
 
-  clearMonth() {
-    this._month = NaN
+  clone() {
+    return new Daty(this.year, this.month, this.date)
   }
 
-  get hasMonth() {
-    return !isNaN(this._month)
-  }
+  // --------------------------------
+  // static methods
+  // --------------------------------
 
-  get date() {
-    return this._date
-  }
-
-  set date(date: number) {
-    date = Math.round(date)
-    const endOfThisMonth = this.endOfMonth
-    if (date < 1) {
-      this.month -= 1
-      this.date = date + this.endOfMonth
-    } else if (date > endOfThisMonth) {
-      this.month += 1
-      this.date = date - endOfThisMonth
-    } else {
-      this._date = date
-    }
-  }
-
-  get hasDate() {
-    return !isNaN(this._date)
-  }
-
-  get endOfMonth() {
-    if (isNaN(this.year) || isNaN(this.month)) {
-      return 31
-    }
-    return endOfMonth(this.year, this.month)
-  }
-
-  get jsDate() {
-    this._jsDate.setFullYear(this.year)
-    this._jsDate.setMonth(this.month)
-    this._jsDate.setDate(this.date)
-    return this._jsDate
-  }
-
-  set jsDate(obj: Date) {
-    this.year = obj.getFullYear()
-    this.month = obj.getMonth()
-    this.date = obj.getDate()
-  }
-
-  toDate() {
-    return new Date(this.jsDate)
+  static today() {
+    return new Daty(new Date())
   }
 }
