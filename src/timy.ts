@@ -41,7 +41,7 @@ export class Timy extends TimyCore {
     )
   }
 
-  today() {
+  now() {
     this.jsDate = new Date()
   }
 }
