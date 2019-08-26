@@ -17,17 +17,7 @@ export class Daty extends DatyCore {
     return this.jsDate.valueOf()
   }
 
-  after(amount: number, unit: 'year' | 'month' | 'date') {
-    const daty = this.clone()
-    daty[unit] += amount
-    return daty
-  }
-
-  before(amount: number, unit: 'year' | 'month' | 'date') {
-    return this.after(-amount, unit)
-  }
-
-  equals(daty: Daty) {
+  equals(daty: DatyCore) {
     return (
       ((!this.hasYear && !daty.hasYear) || this.year === daty.year) &&
       ((!this.hasMonth && !daty.hasMonth) || this.month === daty.month) &&
@@ -49,15 +39,8 @@ export class Daty extends DatyCore {
     return this.hasYear && this.hasMonth && this.hasDate
   }
 
-  clone() {
-    return new Daty(this.year, this.month, this.date)
-  }
-
-  // --------------------------------
-  // static methods
-  // --------------------------------
-
-  static today() {
-    return new Daty(new Date())
+  today() {
+    this.jsDate = new Date()
+    return this
   }
 }
