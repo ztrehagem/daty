@@ -15,7 +15,7 @@ npm install @ztrehagem/daty
 - 存在しない日付を設定した場合は自動的に補正される。
 - 日付の比較や単純な計算が可能。
 - classベースで実装されており、継承することで`toString()`の実装やファクトリーメソッドの実装等の機能拡張が可能。
-- `DatyCore`, `Daty`, `DatyExtend` または `TimyCore`, `Timy`, `TimyExtend` の3段階で機能実装されており、応用範囲を選ぶことができる。
+- `DatyCore`, `Daty` または `TimyCore`, `Timy` の2段階で機能実装されており、応用範囲を選ぶことができる。
 
 ## 例
 
