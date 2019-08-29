@@ -1,4 +1,4 @@
-import { Daty, DatyExtend, Timy } from './dist'
+import { Daty, Timy } from './dist'
 
 let d = new Daty()
 
@@ -28,11 +28,7 @@ console.log(d.year, d.month, d.date)
 console.log('// ---')
 // ---
 
-class ExDaty extends DatyExtend<ExDaty> {
-  factory() {
-    return new ExDaty()
-  }
-
+class ExDaty extends Daty {
   toString(pad: boolean = true) {
     return [
       this.year,
@@ -44,12 +40,12 @@ class ExDaty extends DatyExtend<ExDaty> {
 }
 
 d = new ExDaty(2020, 0, 1)
-console.log('' + d)
+console.log(`d = ${d}`)
 d.month = 10
 d.date = 30
-console.log('' + d)
+console.log(`d = ${d}`)
 
-console.log(new ExDaty(new Date()).after(3, 'date').constructor === ExDaty)
+console.log(new ExDaty(new Date()).after(3, 'date').toString())
 
 console.log(new ExDaty(new Date()).equals(new ExDaty(new Date())))
 
