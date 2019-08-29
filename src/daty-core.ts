@@ -39,6 +39,7 @@ export class DatyCore {
 
   clearYear() {
     this._year = NaN
+    return this
   }
 
   get hasYear() {
@@ -69,6 +70,7 @@ export class DatyCore {
 
   clearMonth() {
     this._month = NaN
+    return this
   }
 
   get hasMonth() {
@@ -99,6 +101,7 @@ export class DatyCore {
 
   clearDate() {
     this._date = NaN
+    return this
   }
 
   get hasDate() {

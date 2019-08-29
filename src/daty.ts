@@ -1,17 +1,13 @@
 import { DatyCore } from './daty-core'
 
 export class Daty extends DatyCore {
-  // --------------------------------
-  // week day
-  // --------------------------------
-
   get day() {
     return this.jsDate.getDay()
   }
 
-  // --------------------------------
-  // calculation
-  // --------------------------------
+  get isFilled() {
+    return this.hasYear && this.hasMonth && this.hasDate
+  }
 
   valueOf() {
     return this.jsDate.valueOf()
@@ -34,18 +30,16 @@ export class Daty extends DatyCore {
     return this.after(-amount, unit)
   }
 
-  // --------------------------------
-  // general methods
-  // --------------------------------
+  set(amount: number, unit: 'year' | 'month' | 'date') {
+    this[unit] = amount
+    return this
+  }
 
   clear() {
     this.clearYear()
     this.clearMonth()
     this.clearDate()
-  }
-
-  get isFilled() {
-    return this.hasYear && this.hasMonth && this.hasDate
+    return this
   }
 
   today() {
