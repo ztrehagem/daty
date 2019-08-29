@@ -21,6 +21,21 @@ export class Timy extends TimyCore {
     )
   }
 
+  after(
+    amount: number,
+    unit: 'hours' | 'minutes' | 'seconds' | 'milliseconds',
+  ) {
+    this[unit] += amount
+    return this
+  }
+
+  before(
+    amount: number,
+    unit: 'hours' | 'minutes' | 'seconds' | 'milliseconds',
+  ) {
+    return this.after(-amount, unit)
+  }
+
   // --------------------------------
   // general methods
   // --------------------------------

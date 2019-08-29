@@ -25,6 +25,15 @@ export class Daty extends DatyCore {
     )
   }
 
+  after(amount: number, unit: 'year' | 'month' | 'date') {
+    this[unit] += amount
+    return this
+  }
+
+  before(amount: number, unit: 'year' | 'month' | 'date') {
+    return this.after(-amount, unit)
+  }
+
   // --------------------------------
   // general methods
   // --------------------------------

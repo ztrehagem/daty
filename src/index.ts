@@ -1,6 +1,4 @@
 export * from './daty'
-export * from './daty-extend'
 export * from './daty-core'
 export * from './timy'
-export * from './timy-extend'
 export * from './timy-core'
