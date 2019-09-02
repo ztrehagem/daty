@@ -2,4 +2,8 @@
 /example.*
 /tslint.json
 /tsconfig.json
+/.node-version
+/.eslintignore
+/.eslintrc.json
+/.prettierrc
 README.md
