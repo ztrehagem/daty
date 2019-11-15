@@ -34,10 +34,10 @@
     "start": "tsc example.ts --module commonjs --target ES2017 && node ./example.js",
     "build": "tsc",
     "watch": "tsc -w",
-    "lint": "eslint src/**/* --fix",
-    "lint:nofix": "eslint src/**/*.ts",
+    "lint": "eslint src/**/*",
+    "lint:fix": "npm run lint -- --fix",
     "clean": "rm -r dist || true",
-    "prepare": "npm run lint:nofix && npm run clean && npm run build"
+    "prepare": "npm run lint && npm run clean && npm run build"
   },
   "husky": {
     "hooks": {
