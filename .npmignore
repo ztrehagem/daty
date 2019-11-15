@@ -2,6 +2,8 @@
 /.eslintrc.json
 /.node-version
 /.prettierrc
+/coverage
 /example.*
+/jest.config.js
 /src
 /tsconfig.json
