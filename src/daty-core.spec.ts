@@ -1,6 +1,6 @@
 import { DatyCore } from './daty-core'
 
-function toYmd (daty: DatyCore) {
+function toYmd(daty: DatyCore) {
   return [daty.year, daty.month, daty.date]
 }
 
