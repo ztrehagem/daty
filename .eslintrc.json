@@ -4,7 +4,8 @@
     "plugin:prettier/recommended"
   ],
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "env": {
@@ -14,7 +15,7 @@
   },
   "parserOptions": {
     "sourceType": "module",
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.eslint.json"
   },
   "rules": {
     "@typescript-eslint/explicit-function-return-type": "off",
@@ -27,6 +28,14 @@
     "files": ["*.ts", "*.tsx"],
     "rules": {
       "no-dupe-class-members": "off"
+    }
+  }, {
+    "files": ["*.spec.ts"],
+    "plugins": [
+      "jest"
+    ],
+    "env": {
+      "jest/globals": true
     }
   }]
 }

@@ -31,23 +31,28 @@
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "scripts": {
-    "start": "tsc example.ts --module commonjs --target ES2017 && node ./example.js",
     "prebuild": "run-s clean",
     "build": "tsc",
     "watch": "tsc -w",
     "lint": "eslint src/**/*",
     "lint:fix": "run-s 'lint -- --fix'",
+    "test": "jest",
+    "test:coverage": "run-s 'test -- --coverage'",
     "clean": "rm -rf dist",
     "prepare": "run-s build"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.23",
     "@typescript-eslint/eslint-plugin": "^2.7.0",
     "@typescript-eslint/parser": "^2.7.0",
     "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-jest": "^23.0.4",
     "eslint-plugin-prettier": "^3.1.1",
+    "jest": "^24.9.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
+    "ts-jest": "^24.1.0",
     "typescript": "^3.7.2"
   },
   "dependencies": {}
