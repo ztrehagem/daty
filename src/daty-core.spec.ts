@@ -113,11 +113,11 @@ describe('DatyCore', () => {
   it('get jsDate', () => {
     const daty = new DatyCore(2000, 0, 1)
     const date = daty.jsDate
-    expect([
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate(),
-    ]).toEqual([2000, 0, 1])
+    expect([date.getFullYear(), date.getMonth(), date.getDate()]).toEqual([
+      2000,
+      0,
+      1,
+    ])
   })
 
   it('set jsDate', () => {
